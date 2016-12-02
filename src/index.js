@@ -3,13 +3,11 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import todoApp from './reducers'
-import App from './components/App';
+import App from './components/App'
 
-import './index.css';
+// import './index.css';
 
 let store = createStore(todoApp)
-
-
 
 render(
 	<Provider store={store}>
@@ -17,16 +15,3 @@ render(
 	</Provider>,
 	document.getElementById('root')
 )
-// import { Provider } from 'react-redux'
-// import { createStore } from 'redux'
-// import todoApp from './reducers'
-// import App from './components/App'
-//
-// let store = createStore(todoApp)
-//
-// render(
-// 	<Provider store={store}>
-// 		<App />
-// 	</Provider>,
-// 	document.getElementById('root')
-// )
