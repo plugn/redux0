@@ -1,21 +1,25 @@
 import React, { PropTypes } from 'react'
+import { connect } from 'react-redux'
+import {toggleTodo, removeTodo} from '../actions'
 
-const Todo = ({ onClick, onTodoRemove, completed, text }) => (
+let Todo = ({ completed, text, id, dispatch }) => (
 	<li
-		onClick={onClick}
-		style={{
-			textDecoration: completed ? 'line-through' : 'none'
-		}}
+		onClick={() => { dispatch(toggleTodo(id)) }}
 	>
-		{text} [<span onClick={onTodoRemove} style={{cursor: 'pointer'}}> x </span>]
+		<span style={{
+				textDecoration: completed ? 'line-through' : 'none'
+			}}>{text}
+		</span>
+		{' '}
+		[<span onClick={() => { dispatch(removeTodo(id)) }} style={{cursor: 'pointer'}}> x </span>] :{id}
 	</li>
 )
 
 Todo.propTypes = {
-	onClick: PropTypes.func.isRequired,
-	onTodoRemove: PropTypes.func.isRequired,
 	completed: PropTypes.bool.isRequired,
 	text: PropTypes.string.isRequired
 }
+
+Todo = connect()(Todo)
 
 export default Todo
